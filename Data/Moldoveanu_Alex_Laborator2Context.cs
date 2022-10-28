@@ -19,5 +19,9 @@ namespace Moldoveanu_Alex_Laborator2.Data
         public DbSet<Moldoveanu_Alex_Laborator2.Models.Publisher> Publisher { get; set; }
 
         public DbSet<Moldoveanu_Alex_Laborator2.Models.Author> Author { get; set; }
+
+        public DbSet<Moldoveanu_Alex_Laborator2.Models.BookCategory> BookCategory { get; set; }
+
+        public DbSet<Moldoveanu_Alex_Laborator2.Models.Category> Category { get; set; }
     }
 }
