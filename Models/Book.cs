@@ -10,7 +10,7 @@ namespace Moldoveanu_Alex_Laborator2.Models
         public int ID { get; set; }
 
         [Display(Name = "Book Title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         
         //public string Author { get; set; }
 
@@ -30,6 +30,6 @@ namespace Moldoveanu_Alex_Laborator2.Models
 
         public Author? Author { get; set; }
 
-        public ICollection<BookCategory> BookCategories { get; set; }
+        public ICollection<BookCategory>? BookCategories { get; set; }
     }
 }
