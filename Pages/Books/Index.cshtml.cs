@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Moldoveanu_Alex_Laborator2.Data;
 using Moldoveanu_Alex_Laborator2.Models;
@@ -27,6 +28,15 @@ namespace Moldoveanu_Alex_Laborator2.Pages.Books
         public async Task OnGetAsync(int? id, int? categoryID)
         {
             BookD = new BookData();
+
+
+            var authorList = _context.Author.Select(x => new
+            {
+                x.ID,
+                FullName = x.FirstName + " " + x.LastName
+            });
+
+            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
 
             BookD.Books = await _context.Book
                 .Include(b => b.Author)
