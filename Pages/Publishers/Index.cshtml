@@ -22,12 +22,12 @@
     <tbody>
         @foreach (var item in Model.PublisherData.Publishers) 
         {
-            string selectedRow= "";
+            string selectedRow = "";
             if (item.ID == Model.PublisherID)
             {
-                selectedRow = "table-succes";
+                selectedRow = "table-success";
             }
-            <tr class="@selectedRow">
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.PublisherName)
             </td>
@@ -48,7 +48,11 @@
     <table class="table">
         @foreach (var item in Model.PublisherData.Publishers)
         {
-            string selectedRow = ""; if (item.ID == Model.PublisherID) { selectedRow = "table-success"; }
+            string selectedRow = ""; 
+            if (item.ID == Model.PublisherID) 
+            { 
+                selectedRow = "table-success"; 
+            }
             <tr class="@selectedRow">
                 <td>
                     @{
