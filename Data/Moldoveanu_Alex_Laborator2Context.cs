@@ -23,5 +23,9 @@ namespace Moldoveanu_Alex_Laborator2.Data
         public DbSet<Moldoveanu_Alex_Laborator2.Models.BookCategory> BookCategory { get; set; }
 
         public DbSet<Moldoveanu_Alex_Laborator2.Models.Category> Category { get; set; }
+
+        public DbSet<Moldoveanu_Alex_Laborator2.Models.Member> Member { get; set; }
+
+        public DbSet<Moldoveanu_Alex_Laborator2.Models.Borrowing> Borrowing { get; set; }
     }
 }
