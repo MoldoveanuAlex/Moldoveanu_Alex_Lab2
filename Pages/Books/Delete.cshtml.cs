@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ using Moldoveanu_Alex_Laborator2.Models;
 
 namespace Moldoveanu_Alex_Laborator2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Moldoveanu_Alex_Laborator2.Data.Moldoveanu_Alex_Laborator2Context _context;
@@ -29,7 +32,9 @@ namespace Moldoveanu_Alex_Laborator2.Pages.Books
                 return NotFound();
             }
 
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            var book = await _context.Book
+                .Include(b => b.Author)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (book == null)
             {
