@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Moldoveanu_Alex_Laborator2.Data;
 using Moldoveanu_Alex_Laborator2.Models;
@@ -28,15 +29,21 @@ namespace Moldoveanu_Alex_Laborator2.Pages.Borrowings
                 return NotFound();
             }
 
-            var borrowing = await _context.Borrowing.FirstOrDefaultAsync(m => m.ID == id);
+            var borrowing = await _context.Borrowing
+                .Include(b => b.Member)
+                .Include(b=> b.Book)
+                .Include(b => b.Book.Author)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (borrowing == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Borrowing = borrowing;
             }
+
+
             return Page();
         }
     }
