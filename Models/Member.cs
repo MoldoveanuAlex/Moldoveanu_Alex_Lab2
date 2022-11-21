@@ -20,7 +20,7 @@ namespace Moldoveanu_Alex_Laborator2.Models
         
         public string Email { get; set; }
 
-        [RegularExpression(@"^\(?(0[0-9]{0})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", 
+        [RegularExpression(@"^\(?(0[0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", 
             ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
         public string? Phone { get; set; }
         
